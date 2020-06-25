@@ -1,5 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -10,11 +15,30 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./register.component.less'],
 })
 export class UserRegisterComponent implements OnDestroy {
-  constructor(fb: FormBuilder, private router: Router, public http: _HttpClient, public msg: NzMessageService) {
+  constructor(
+    fb: FormBuilder,
+    private router: Router,
+    public http: _HttpClient,
+    public msg: NzMessageService
+  ) {
     this.form = fb.group({
       mail: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.checkPassword.bind(this)]],
-      confirm: [null, [Validators.required, Validators.minLength(6), UserRegisterComponent.passwordEquar]],
+      password: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          UserRegisterComponent.checkPassword.bind(this),
+        ],
+      ],
+      confirm: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          UserRegisterComponent.passwordEquar,
+        ],
+      ],
       mobilePrefix: ['+86'],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
@@ -72,7 +96,8 @@ export class UserRegisterComponent implements OnDestroy {
     }
 
     if (self.visible) {
-      self.progress = control.value.length * 10 > 100 ? 100 : control.value.length * 10;
+      self.progress =
+        control.value.length * 10 > 100 ? 100 : control.value.length * 10;
     }
   }
 
@@ -115,7 +140,7 @@ export class UserRegisterComponent implements OnDestroy {
 
     const data = this.form.value;
     this.http.post('/register', data).subscribe(() => {
-      this.router.navigateByUrl('/passport/register-result', {
+      this.router.navigateByUrl('/auth/register-result', {
         queryParams: { email: data.mail },
       });
     });

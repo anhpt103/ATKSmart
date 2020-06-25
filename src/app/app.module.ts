@@ -5,13 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // #region default language
-// 参考：https://ng-alain.com/docs/i18n
-import { default as ngLang } from '@angular/common/locales/vi';
+import { default as ngLang } from '@angular/common/locales/zh';
 import { DELON_LOCALE, zh_CN as delonLang } from '@delon/theme';
 import { zhCN as dateLang } from 'date-fns/locale';
-import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
+import {
+  NZ_DATE_LOCALE,
+  NZ_I18N,
+  zh_CN as zorroLang,
+} from 'ng-zorro-antd/i18n';
 const LANG = {
-  abbr: 'vi',
+  abbr: 'zh',
   ng: ngLang,
   zorro: zorroLang,
   date: dateLang,
@@ -49,7 +52,9 @@ const I18NSERVICE_MODULES = [
   }),
 ];
 
-const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }];
+const I18NSERVICE_PROVIDES = [
+  { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false },
+];
 
 // #endregion
 
@@ -114,7 +119,12 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     ...GLOBAL_THIRD_MODULES,
     ...FORM_MODULES,
   ],
-  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
+  providers: [
+    ...LANG_PROVIDES,
+    ...INTERCEPTOR_PROVIDES,
+    ...I18NSERVICE_PROVIDES,
+    ...APPINIT_PROVIDES,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -31,26 +31,29 @@ function genData(params: any) {
   const start = (pi - 1) * ps;
 
   if (params.no) {
-    ret = ret.filter(data => data.no.indexOf(params.no) > -1);
+    ret = ret.filter((data) => data.no.indexOf(params.no) > -1);
   }
 
   return { total: ret.length, list: ret.slice(start, ps * pi) };
 }
 
 function saveData(id: number, value: any) {
-  const item = list.find(w => w.id === id);
-  if (!item) { return { msg: '无效用户信息' }; }
+  const item = list.find((w) => w.id === id);
+  if (!item) {
+    return { msg: '无效用户信息' };
+  }
   Object.assign(item, value);
   return { msg: 'ok' };
 }
 
 export const USERS = {
   '/user': (req: MockRequest) => genData(req.queryString),
-  '/user/:id': (req: MockRequest) => list.find(w => w.id === +req.params.id),
+  '/user/:id': (req: MockRequest) => list.find((w) => w.id === +req.params.id),
   'POST /user/:id': (req: MockRequest) => saveData(+req.params.id, req.body),
   '/user/current': {
     name: 'Cipchk',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+    avatar:
+      'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'cipchk@qq.com',
     signature: '海纳百川，有容乃大',
@@ -100,8 +103,11 @@ export const USERS = {
   'POST /user/avatar': 'ok',
   'POST /login/account': (req: MockRequest) => {
     const data = req.body;
-    if (!(data.userName === 'admin' || data.userName === 'user') || data.password !== 'ng-alain.com') {
-      return { msg: `Invalid username or password（admin/ng-alain.com）` };
+    if (
+      !(data.userName === 'admin' || data.userName === 'user') ||
+      data.password !== 'admin@123'
+    ) {
+      return { msg: `Invalid username or password（admin/admin@123）` };
     }
     return {
       msg: 'ok',
