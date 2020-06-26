@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StartupService } from '@core';
 import { ReuseTabService } from '@delon/abc/reuse-tab';
-import { SocialOpenType, SocialService } from '@delon/auth';
+import { DA_SERVICE_TOKEN, ITokenService, SocialOpenType, SocialService } from '@delon/auth';
 import { SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -25,13 +25,14 @@ export class UserLoginComponent implements OnDestroy {
     private socialService: SocialService,
     @Optional()
     @Inject(ReuseTabService)
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
     private reuseTabService: ReuseTabService,
     private startupSrv: StartupService,
     public http: _HttpClient,
     public msg: NzMessageService
   ) {
     this.form = fb.group({
-      userName: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
       password: [
         null,
         [
@@ -49,8 +50,8 @@ export class UserLoginComponent implements OnDestroy {
 
   // #region fields
 
-  get userName() {
-    return this.form.controls.userName;
+  get email() {
+    return this.form.controls.email;
   }
   get password() {
     return this.form.controls.password;
@@ -96,11 +97,11 @@ export class UserLoginComponent implements OnDestroy {
   submit() {
     this.error = '';
     if (this.type === 0) {
-      this.userName.markAsDirty();
-      this.userName.updateValueAndValidity();
+      this.email.markAsDirty();
+      this.email.updateValueAndValidity();
       this.password.markAsDirty();
       this.password.updateValueAndValidity();
-      if (this.userName.invalid || this.password.invalid) {
+      if (this.email.invalid || this.password.invalid) {
         return;
       }
     } else {
@@ -116,25 +117,23 @@ export class UserLoginComponent implements OnDestroy {
     this.http
       .post(`${environment.API_URL}` + serviceAPI.LOGIN, {
         type: this.type,
-        userName: this.userName.value,
+        email: this.email.value,
         password: this.password.value,
       })
       .subscribe((res: any) => {
-        console.log(res);
-        if (res.msg !== 'ok') {
-          this.error = res.msg;
+        if (res.isFailed) {
+          this.error = res.errors[0].message;
           return;
         }
         this.reuseTabService.clear();
-        // this.tokenService.set(res.user);
-        // console.log(this.tokenService.get());
-        // this.startupSrv.load().then(() => {
-        //   let url = this.tokenService.referrer.url || '/';
-        //   if (url.includes('/auth')) {
-        //     url = '/';
-        //   }
-        //   this.router.navigateByUrl(url);
-        // });
+        this.tokenService.set(res.value);
+        this.startupSrv.load().then(() => {
+          let url = this.tokenService.referrer.url || '/';
+          if (url.includes('/auth')) {
+            url = '/';
+          }
+          this.router.navigateByUrl(url);
+        });
       });
   }
 

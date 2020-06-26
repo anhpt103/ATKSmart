@@ -65,7 +65,8 @@ export class DefaultInterceptor implements HttpInterceptor {
     // Business processing: some common operations
     switch (ev.status) {
       case 200:
-        // Business level error handling, the following is assumed to restrest has a unified output format (regardless of success or failure has a corresponding data format) to deal with
+        // Business level error handling, the following is assumed to restrest has a unified
+        // output format (regardless of success or failure has a corresponding data format) to deal with
         // For example the response content:
         // Error content: {status: 1, msg:'Illegal parameter'}
         // Correct content: {status: 0, response: {}}
@@ -78,7 +79,8 @@ export class DefaultInterceptor implements HttpInterceptor {
         //         // this.http.get('/').subscribe() 并不会触发
         //         return throwError({});
         //     } else {
-        //        // Change the content of `body` to the content of `response`. For most scenes, you no longer need to care about the service status code
+        //        // Change the content of `body` to the content of `response`. For most scenes,
+                  // you no longer need to care about the service status code
         //         return of(new HttpResponse(Object.assign(event, { body: body.response })));
         //         // Or still keep the complete format
         //         return of(event);

@@ -4,7 +4,7 @@
     <nz-form-item>
         <nz-form-control [nzErrorTip]="mailErrorTip">
             <nz-input-group nzSize="large" nzAddonBeforeIcon="user">
-                <input nz-input formControlName="mail" placeholder="Email" />
+                <input nz-input formControlName="email" placeholder="Email" />
             </nz-input-group>
             <ng-template #mailErrorTip let-i>
                 <ng-container *ngIf="i.errors?.required">{{ 'validation.email.required' | translate }}</ng-container>
@@ -48,11 +48,10 @@
             <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
                 <ng-template #addOnBeforeTemplate>
                     <nz-select formControlName="mobilePrefix" style="width: 100px;">
-                        <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
-                        <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+                        <nz-option [nzLabel]="'+84'" [nzValue]="'+84'"></nz-option>
                     </nz-select>
                 </ng-template>
-                <input formControlName="mobile" nz-input placeholder="Phone number" />
+                <input formControlName="phoneNumber" nz-input placeholder="Phone number" />
             </nz-input-group>
             <ng-template #mobileErrorTip let-i>
                 <ng-container *ngIf="i.errors?.required">{{ 'validation.phone-number.required' | translate }}</ng-container>
@@ -80,6 +79,6 @@
         <button nz-button nzType="primary" nzSize="large" type="submit" [nzLoading]="http.loading" class="submit">
       {{ 'app.register.register' | translate }}
     </button>
-        <a class="login" routerLink="/passport/login">{{ 'app.register.sign-in' | translate }}</a>
+        <a class="login" routerLink="/auth/login">{{ 'app.register.sign-in' | translate }}</a>
     </nz-form-item>
 </form>

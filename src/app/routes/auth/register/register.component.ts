@@ -8,6 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { serviceAPI } from 'src/app/core/constants/service-api';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'auth-register',
@@ -22,12 +24,13 @@ export class UserRegisterComponent implements OnDestroy {
     public msg: NzMessageService
   ) {
     this.form = fb.group({
-      mail: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email]],
       password: [
         null,
         [
           Validators.required,
           Validators.minLength(6),
+          Validators.maxLength(32),
           UserRegisterComponent.checkPassword.bind(this),
         ],
       ],
@@ -36,19 +39,20 @@ export class UserRegisterComponent implements OnDestroy {
         [
           Validators.required,
           Validators.minLength(6),
+          Validators.maxLength(32),
           UserRegisterComponent.passwordEquar,
         ],
       ],
-      mobilePrefix: ['+86'],
-      mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
+      mobilePrefix: ['+84'],
+      phoneNumber: [null, [Validators.required, Validators.pattern(/^0\d{9}$/)]],
       captcha: [null, [Validators.required]],
     });
   }
 
   // #region fields
 
-  get mail() {
-    return this.form.controls.mail;
+  get email() {
+    return this.form.controls.email;
   }
   get password() {
     return this.form.controls.password;
@@ -56,8 +60,8 @@ export class UserRegisterComponent implements OnDestroy {
   get confirm() {
     return this.form.controls.confirm;
   }
-  get mobile() {
-    return this.form.controls.mobile;
+  get phoneNumber() {
+    return this.form.controls.phoneNumber;
   }
   get captcha() {
     return this.form.controls.captcha;
@@ -112,9 +116,9 @@ export class UserRegisterComponent implements OnDestroy {
   }
 
   getCaptcha() {
-    if (this.mobile.invalid) {
-      this.mobile.markAsDirty({ onlySelf: true });
-      this.mobile.updateValueAndValidity({ onlySelf: true });
+    if (this.phoneNumber.invalid) {
+      this.phoneNumber.markAsDirty({ onlySelf: true });
+      this.phoneNumber.updateValueAndValidity({ onlySelf: true });
       return;
     }
     this.count = 59;
@@ -139,7 +143,7 @@ export class UserRegisterComponent implements OnDestroy {
     }
 
     const data = this.form.value;
-    this.http.post('/register', data).subscribe(() => {
+    this.http.post(`${environment.API_URL}` + serviceAPI.REGISTER, data).subscribe(() => {
       this.router.navigateByUrl('/auth/register-result', {
         queryParams: { email: data.mail },
       });
