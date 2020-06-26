@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { ACLService } from '@delon/acl';
-import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';
+import {
+  ALAIN_I18N_TOKEN,
+  MenuService,
+  SettingsService,
+  TitleService,
+} from '@delon/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { zip } from 'rxjs';
@@ -11,8 +16,8 @@ import { ICONS_AUTO } from '../../../style-icons-auto';
 import { I18NService } from '../i18n/i18n.service';
 
 /**
- * 用于应用启动时
- * 一般用来获取应用所需要的基础数据等
+ * Used when the application starts
+ * Generally used to obtain the basic data required by the application, etc.
  */
 @Injectable()
 export class StartupService {
@@ -24,7 +29,7 @@ export class StartupService {
     private settingService: SettingsService,
     private aclService: ACLService,
     private titleService: TitleService,
-    private httpClient: HttpClient,
+    private httpClient: HttpClient
   ) {
     iconSrv.addIcon(...ICONS_AUTO, ...ICONS);
   }
@@ -33,14 +38,17 @@ export class StartupService {
     // only works with promises
     // https://github.com/angular/angular/issues/15088
     return new Promise((resolve) => {
-      zip(this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`), this.httpClient.get('assets/tmp/app-data.json'))
+      zip(
+        this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`),
+        this.httpClient.get('assets/tmp/app-data.json')
+      )
         .pipe(
-          // 接收其他拦截器后产生的异常消息
+          // Exception messages generated after receiving other interceptors
           catchError((res) => {
             console.warn(`StartupService.load: Network request failed`, res);
             resolve(null);
             return [];
-          }),
+          })
         )
         .subscribe(
           ([langData, appData]) => {
@@ -50,22 +58,22 @@ export class StartupService {
 
             // application data
             const res: any = appData;
-            // 应用信息：包括站点名、描述、年份
+            // Application information: including site name, description, year
             this.settingService.setApp(res.app);
-            // 用户信息：包括姓名、头像、邮箱地址
+            // User information: including name, avatar, email address
             this.settingService.setUser(res.user);
-            // ACL：设置权限为全量
+            // ACL: set permissions to full
             this.aclService.setFull(true);
-            // 初始化菜单
+            // Initialize the menu
             this.menuService.add(res.menu);
-            // 设置页面标题的后缀
+            // Set the suffix of the page title
             this.titleService.default = '';
             this.titleService.suffix = res.app.name;
           },
           () => {},
           () => {
             resolve(null);
-          },
+          }
         );
     });
   }

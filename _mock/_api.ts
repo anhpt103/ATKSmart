@@ -2,7 +2,16 @@ import { MockRequest, MockStatusError } from '@delon/mock';
 
 // region: mock data
 
-const titles = ['Alipay', 'Angular', 'Ant Design', 'Ant Design Pro', 'Bootstrap', 'React', 'Vue', 'Webpack'];
+const titles = [
+  'Alipay',
+  'Angular',
+  'Ant Design',
+  'Ant Design Pro',
+  'Bootstrap',
+  'React',
+  'Vue',
+  'Webpack',
+];
 
 const avatars = [
   'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png', // Alipay
@@ -29,18 +38,18 @@ const desc = [
 ];
 
 const user = [
-  '卡色',
+  'Card color',
   'cipchk',
-  '付小小',
-  '曲丽丽',
-  '林东东',
-  '周星星',
-  '吴加好',
-  '朱偏右',
-  '鱼酱',
-  '乐哥',
-  '谭小仪',
-  '仲尼',
+  'Fu Xiaoxiao',
+  'Qu Lili',
+  'Lin Dongdong',
+  'Zhou Xingxing',
+  'Wu Jiahao',
+  'Zhu Bi right',
+  'Fish sauce',
+  'Le Brother',
+  'Tan Xiaoyi',
+  'Zhong Ni',
 ];
 
 // endregion
@@ -53,7 +62,10 @@ function getFakeList(count: number = 20): any[] {
       owner: user[i % 10],
       title: titles[i % 8],
       avatar: avatars[i % 8],
-      cover: parseInt((i / 4).toString(), 10) % 2 === 0 ? covers[i % 4] : covers[3 - (i % 4)],
+      cover:
+        parseInt((i / 4).toString(), 10) % 2 === 0
+          ? covers[i % 4]
+          : covers[3 - (i % 4)],
       status: ['active', 'exception', 'normal'][i % 3],
       percent: Math.ceil(Math.random() * 50) + 50,
       logo: avatars[i % 8],
@@ -62,26 +74,29 @@ function getFakeList(count: number = 20): any[] {
       createdAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 2 * i),
       subDescription: desc[i % 5],
       description:
-        '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。',
+        'During the R&D process of a product in China, different design specifications and implementation methods will appear, but there are often many similar pages and components. These similar components will be separated into a set of standard specifications. ',
       activeUser: Math.ceil(Math.random() * 100000) + 100000,
       newUser: Math.ceil(Math.random() * 1000) + 1000,
       star: Math.ceil(Math.random() * 100) + 100,
       like: Math.ceil(Math.random() * 100) + 100,
       message: Math.ceil(Math.random() * 10) + 10,
       content:
-        '段落示意：蚂蚁金服设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，提供跨越设计与开发的体验解决方案。蚂蚁金服设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，提供跨越设计与开发的体验解决方案。',
+        "Paragraph: Ant Financial Design Platform ant.design, with minimal workload, seamlessly connects to Ant Financial's ecology, and provides experience solutions that span design and development. Ant Financial Design Platform ant.design, with minimal workload, seamlessly connects to Ant Financial's ecology, providing experience solutions that span design and development. ",
       members: [
         {
-          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ZiESqWwCXBRQoaPONSJe.png',
-          name: '曲丽丽',
+          avatar:
+            'https://gw.alipayobjects.com/zos/rmsportal/ZiESqWwCXBRQoaPONSJe.png',
+          name: 'Qu Lili',
         },
         {
-          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/tBOxZPlITHqwlGjsJWaF.png',
-          name: '王昭君',
+          avatar:
+            'https://gw.alipayobjects.com/zos/rmsportal/tBOxZPlITHqwlGjsJWaF.png',
+          name: 'Wang Zhaojun',
         },
         {
-          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
-          name: '董娜娜',
+          avatar:
+            'https://gw.alipayobjects.com/zos/rmsportal/sBxjgqiuHMGRkIjqlQCd.png',
+          name: 'Dong Nana',
         },
       ],
     });

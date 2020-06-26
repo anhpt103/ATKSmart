@@ -11,7 +11,14 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  RouteConfigLoadEnd,
+  RouteConfigLoadStart,
+  Router,
+} from '@angular/router';
 import { SettingsService } from '@delon/theme';
 import { updateHostClass } from '@delon/util';
 import { environment } from '@env/environment';
@@ -25,7 +32,8 @@ import { SettingDrawerComponent } from './setting-drawer/setting-drawer.componen
   selector: 'layout-default',
   templateUrl: './default.component.html',
 })
-export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LayoutDefaultComponent
+  implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   @ViewChild('settingHost', { read: ViewContainerRef, static: true })
   private settingHost: ViewContainerRef;
@@ -38,7 +46,7 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     private settings: SettingsService,
     private el: ElementRef,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private doc: any,
+    @Inject(DOCUMENT) private doc: any
   ) {
     // scroll to top in change page
     router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((evt) => {
@@ -48,11 +56,15 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
       if (evt instanceof NavigationError || evt instanceof NavigationCancel) {
         this.isFetching = false;
         if (evt instanceof NavigationError) {
-          msgSrv.error(`无法加载${evt.url}路由`, { nzDuration: 1000 * 3 });
+          msgSrv.error(`Unable to load${evt.url}routing`, {
+            nzDuration: 1000 * 3,
+          });
         }
         return;
       }
-      if (!(evt instanceof NavigationEnd || evt instanceof RouteConfigLoadEnd)) {
+      if (
+        !(evt instanceof NavigationEnd || evt instanceof RouteConfigLoadEnd)
+      ) {
         return;
       }
       if (this.isFetching) {
@@ -79,7 +91,9 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
     // Setting componet for only developer
     if (!environment.production) {
       setTimeout(() => {
-        const settingFactory = this.resolver.resolveComponentFactory(SettingDrawerComponent);
+        const settingFactory = this.resolver.resolveComponentFactory(
+          SettingDrawerComponent
+        );
         this.settingHost.createComponent(settingFactory);
       }, 22);
     }
@@ -87,7 +101,9 @@ export class LayoutDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngOnInit() {
     const { settings, unsubscribe$ } = this;
-    settings.notify.pipe(takeUntil(unsubscribe$)).subscribe(() => this.setClass());
+    settings.notify
+      .pipe(takeUntil(unsubscribe$))
+      .subscribe(() => this.setClass());
     this.setClass();
   }
 

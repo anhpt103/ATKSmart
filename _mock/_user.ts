@@ -13,9 +13,9 @@ for (let i = 0; i < total; i += 1) {
       'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
     ][i % 2],
     no: `TradeCode ${i}`,
-    title: `一个任务名称 ${i}`,
-    owner: '曲丽丽',
-    description: '这是一段描述',
+    title: `A task name ${i}`,
+    owner: 'Owner',
+    description: 'This is a description',
     callNo: Math.floor(Math.random() * 1000),
     status: Math.floor(Math.random() * 10) % 4,
     updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
@@ -40,7 +40,7 @@ function genData(params: any) {
 function saveData(id: number, value: any) {
   const item = list.find((w) => w.id === id);
   if (!item) {
-    return { msg: '无效用户信息' };
+    return { msg: 'Invalid user information' };
   }
   Object.assign(item, value);
   return { msg: 'ok' };
@@ -51,54 +51,55 @@ export const USERS = {
   '/user/:id': (req: MockRequest) => list.find((w) => w.id === +req.params.id),
   'POST /user/:id': (req: MockRequest) => saveData(+req.params.id, req.body),
   '/user/current': {
-    name: 'Cipchk',
+    name: 'AnhPT',
     avatar:
       'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'cipchk@qq.com',
-    signature: '海纳百川，有容乃大',
-    title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    signature: 'Be tolerant to diversity, tolerance is a virtue',
+    title: 'Interaction expert',
+    group:
+      'Ant Financial-XX business group-XY platform department-XY technology department-UED',
     tags: [
       {
         key: '0',
-        label: '很有想法的',
+        label: 'Very thoughtful',
       },
       {
         key: '1',
-        label: '专注撩妹',
+        label: 'Focus on the girl',
       },
       {
         key: '2',
-        label: '帅~',
+        label: 'Handsome~',
       },
       {
         key: '3',
-        label: '通吃',
+        label: 'Take all',
       },
       {
         key: '4',
-        label: '专职后端',
+        label: 'Full-time backend',
       },
       {
         key: '5',
-        label: '海纳百川',
+        label: 'Heinabaichuan',
       },
     ],
     notifyCount: 12,
     country: 'China',
     geographic: {
       province: {
-        label: '上海',
+        label: 'Shanghai',
         key: '330000',
       },
       city: {
-        label: '市辖区',
+        label: 'City area',
         key: '330100',
       },
     },
     address: 'XX区XXX路 XX 号',
-    phone: '你猜-你猜你猜猜猜',
+    phone: 'Guess you guess guess',
   },
   'POST /user/avatar': 'ok',
   'POST /login/account': (req: MockRequest) => {

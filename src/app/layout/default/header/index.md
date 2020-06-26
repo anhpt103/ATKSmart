@@ -1,20 +1,20 @@
 ---
 component: app-header
-title: 顶部菜单
+title: top menu
 ---
 
-顶部菜单组件允许通过 `components` 目录下的组件进行按需组装。
+The top menu components allow for on-demand assembly of components under the `components` directory.
 
-## 组件列表
+## Component list
 
-| 组件名              | 说明                   |
-| ------------------- | ---------------------- |
-| `header-fullscreen` | Full screen switching  |
-| `header-icon`       | 应用图标               |
-| `header-langs`      | 语言切换               |
-| `header-notify`     | 菜单通知               |
-| `header-search`     | 搜索框                 |
-| `header-storage`    | 清除 LocalStorage 缓存 |
-| `header-task`       | 任务通知               |
-| `header-theme`      | 主题切换               |
-| `header-user`       | 用户菜单               |
+| Component name      | Description              |
+| ------------------- | ------------------------ |
+| `header-fullscreen` | Full screen switching    |
+| `header-icon`       | Application icon         |
+| `header-langs`      | Language switching       |
+| `header-notify`     | Menu Notification        |
+| `header-search`     | Search box               |
+| `header-storage`    | Clear LocalStorage cache |
+| `header-task`       | Task notification        |
+| `header-theme`      | Theme Switching          |
+| `header-user`       | User Menu                |
