@@ -20,7 +20,7 @@ const COMPONENTS = [
   DashboardAnalysisComponent,
   DashboardMonitorComponent,
   DashboardWorkplaceComponent,
-  // passport pages
+  // authorize pages
   UserLoginComponent,
   UserRegisterComponent,
   UserRegisterResultComponent,

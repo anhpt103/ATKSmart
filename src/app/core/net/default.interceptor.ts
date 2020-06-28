@@ -121,13 +121,22 @@ export class DefaultInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // Unified plus server prefix
+    let authReq = req;
+    if (!req.headers.get('Authorization')) {
+      const token = req.headers.get('token');
+      if (token) {
+        authReq = req.clone({
+          setHeaders: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = environment.SERVER_URL + url;
     }
 
-    const newReq = req.clone({ url });
-    return next.handle(newReq).pipe(
+    return next.handle(authReq).pipe(
       mergeMap((event: any) => {
         // Allow unified handling of request errors
         if (event instanceof HttpResponseBase) {

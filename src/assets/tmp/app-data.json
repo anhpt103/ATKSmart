@@ -65,149 +65,59 @@
                 "i18n": "menu.account",
                 "icon": "anticon-user",
                 "children": [{
-                        "text": "center",
-                        "link": "/pro/account/center",
-                        "i18n": "menu.account.center"
+                        "text": "settings",
+                        "link": "/user/settings",
+                        "i18n": "menu.account.settings"
                     },
                     {
-                        "text": "settings",
-                        "link": "/pro/account/settings",
-                        "i18n": "menu.account.settings"
+                        "text": "group",
+                        "link": "/group",
+                        "i18n": "menu.group.settings"
+                    },
+                    {
+                        "text": "permission",
+                        "link": "/permission",
+                        "i18n": "menu.permission.settings"
                     }
                 ]
             }]
         },
         {
-            "text": "Nghiệp vụ",
-            "i18n": "menu.alain",
+            "text": "Danh mục",
+            "i18n": "menu.category",
             "group": true,
             "hideInBreadcrumb": true,
             "children": [{
-                    "text": "Menu style",
-                    "i18n": "menu.style",
-                    "icon": "anticon-info",
-                    "children": [{
-                            "text": "Typography",
-                            "link": "/style/typography",
-                            "i18n": "menu.style.typography",
-                            "shortcut": true
-                        },
-                        {
-                            "text": "Grid Masonry",
-                            "link": "/style/gridmasonry",
-                            "i18n": "menu.style.gridmasonry"
-                        },
-                        {
-                            "text": "Colors",
-                            "link": "/style/colors",
-                            "i18n": "menu.style.colors"
-                        }
-                    ]
-                },
-                {
-                    "text": "Delon",
-                    "i18n": "menu.delon",
-                    "icon": "anticon-bulb",
-                    "children": [{
-                            "text": "Dynamic Form",
-                            "link": "/delon/form",
-                            "i18n": "menu.delon.form"
-                        },
-                        {
-                            "text": "Simple Table",
-                            "link": "/delon/st",
-                            "i18n": "menu.delon.table"
-                        },
-                        {
-                            "text": "Util",
-                            "link": "/delon/util",
-                            "i18n": "menu.delon.util",
-                            "acl": "role-a"
-                        },
-                        {
-                            "text": "Print",
-                            "link": "/delon/print",
-                            "i18n": "menu.delon.print",
-                            "acl": "role-b"
-                        },
-                        {
-                            "text": "QR",
-                            "link": "/delon/qr",
-                            "i18n": "menu.delon.qr"
-                        },
-                        {
-                            "text": "ACL",
-                            "link": "/delon/acl",
-                            "i18n": "menu.delon.acl"
-                        },
-                        {
-                            "text": "Route Guard",
-                            "link": "/delon/guard",
-                            "i18n": "menu.delon.guard"
-                        },
-                        {
-                            "text": "Cache",
-                            "link": "/delon/cache",
-                            "i18n": "menu.delon.cache"
-                        },
-                        {
-                            "text": "Down File",
-                            "link": "/delon/downfile",
-                            "i18n": "menu.delon.downfile"
-                        },
-                        {
-                            "text": "Xlsx",
-                            "link": "/delon/xlsx",
-                            "i18n": "menu.delon.xlsx"
-                        },
-                        {
-                            "text": "Zip",
-                            "link": "/delon/zip",
-                            "i18n": "menu.delon.zip"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "text": "More",
-            "i18n": "menu.more",
-            "group": true,
-            "hideInBreadcrumb": true,
-            "children": [{
-                    "text": "Report",
-                    "i18n": "menu.report",
-                    "icon": "anticon-cloud",
-                    "children": [{
-                        "text": "Relation",
-                        "link": "/data-v/relation",
-                        "i18n": "menu.report.relation",
-                        "reuse": false
-                    }]
-                },
-                {
-                    "text": "Extras",
-                    "i18n": "menu.extras",
-                    "link": "/extras",
-                    "icon": "anticon-link",
-                    "children": [{
-                            "text": "Help Center",
-                            "link": "/extras/helpcenter",
-                            "i18n": "menu.extras.helpcenter"
-                        },
-                        {
-                            "text": "Settings",
-                            "link": "/extras/settings",
-                            "i18n": "menu.extras.settings"
-                        },
-                        {
-                            "text": "Poi",
-                            "link": "/extras/poi",
-                            "i18n": "menu.extras.poi"
-                        }
-                    ]
-                }
-            ]
+                "text": "Quản lý danh mục",
+                "i18n": "menu.category.setting",
+                "icon": "anticon-bulb",
+                "children": [{
+                        "text": "Sản phẩm",
+                        "link": "/category/product",
+                        "i18n": "menu.category.product"
+                    },
+                    {
+                        "text": "Phòng hát",
+                        "link": "/category/room",
+                        "i18n": "menu.category.room"
+                    },
+                    {
+                        "text": "Đơn vị tính",
+                        "link": "/category/unitCalc",
+                        "i18n": "menu.category.unit-calc"
+                    },
+                    {
+                        "text": "Nhà cung cấp",
+                        "link": "/category/supplier",
+                        "i18n": "menu.category.supplier"
+                    },
+                    {
+                        "text": "Loại thuế",
+                        "link": "/category/tax",
+                        "i18n": "menu.category.tax"
+                    }
+                ]
+            }]
         }
     ]
 }
