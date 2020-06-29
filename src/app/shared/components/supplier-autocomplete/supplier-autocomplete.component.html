@@ -1,0 +1,10 @@
+<div class="example-input">
+  <input
+    placeholder="Chọn giá trị"
+    nz-input
+    [(ngModel)]="supplierModel"
+    [nzAutocomplete]="auto"
+    (ngModelChange)="onChange($event)"
+  />
+  <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+</div>

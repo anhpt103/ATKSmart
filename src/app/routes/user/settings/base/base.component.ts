@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { _HttpClient } from '@delon/theme';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { zip } from 'rxjs';
@@ -10,18 +15,23 @@ import { zip } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserSettingsBaseComponent implements OnInit {
-  constructor(private http: _HttpClient, private cdr: ChangeDetectorRef, private msg: NzMessageService) {}
+  constructor(
+    private http: _HttpClient,
+    private cdr: ChangeDetectorRef,
+    private msg: NzMessageService
+  ) {}
   avatar = '';
   userLoading = true;
   user: any;
-
-  // #region geo
 
   provinces: any[] = [];
   cities: any[] = [];
 
   ngOnInit(): void {
-    zip(this.http.get('/user/current'), this.http.get('/geo/province')).subscribe(([user, province]: any) => {
+    zip(
+      this.http.get('/user/current'),
+      this.http.get('/geo/province')
+    ).subscribe(([user, province]: any) => {
       this.userLoading = false;
       this.user = user;
       this.provinces = province;

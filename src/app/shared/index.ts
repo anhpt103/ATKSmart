@@ -1,4 +1,5 @@
 // Components
+export * from './components/supplier-autocomplete/supplier-autocomplete.component';
 
 // Utils
 export * from './utils/yuan';

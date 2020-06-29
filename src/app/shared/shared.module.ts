@@ -14,12 +14,13 @@ import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import { CountdownModule } from 'ngx-countdown';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
+import { SupplierAutocompleteComponent } from './components/supplier-autocomplete/supplier-autocomplete.component';
 
 const THIRDMODULES = [CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS = [];
+const COMPONENTS = [SupplierAutocompleteComponent];
 const DIRECTIVES = [];
 // #endregion
 

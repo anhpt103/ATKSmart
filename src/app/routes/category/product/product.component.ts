@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   OnInit,
@@ -29,8 +28,20 @@ export class ProductComponent implements OnInit {
   data: any[] = [];
   loading = false;
   status = [
-    { index: 1, text: 'Sử dụng', value: false, type: 'success', checked: false },
-    { index: 0, text: 'Không sử dụng', value: false, type: 'error', checked: false },
+    {
+      index: 1,
+      text: 'Sử dụng',
+      value: false,
+      type: 'success',
+      checked: false,
+    },
+    {
+      index: 0,
+      text: 'Không sử dụng',
+      value: false,
+      type: 'error',
+      checked: false,
+    },
   ];
   @ViewChild('st', { static: true })
   st: STComponent;
@@ -50,7 +61,7 @@ export class ProductComponent implements OnInit {
     {
       title: 'Số tồn',
       index: 'productInventory',
-      type: 'number'
+      type: 'number',
     },
     {
       title: 'Status',
@@ -60,10 +71,9 @@ export class ProductComponent implements OnInit {
         menus: this.status,
         fn: (filter: any, record: any) => record.status === filter.index,
       },
-    }
+    },
   ];
   selectedRows: STData[] = [];
-  description = '';
   totalCallNo = 0;
   expandForm = false;
 
@@ -91,7 +101,7 @@ export class ProductComponent implements OnInit {
       .pipe(
         map((list: any[]) =>
           list.map((i) => {
-            i.status === 2 ? i.status = 0 : i.status = 1;
+            i.status === 2 ? (i.status = 0) : (i.status = 1);
             const statusItem = this.status[i.status];
             i.statusText = statusItem.text;
             i.statusType = statusItem.type;
@@ -101,7 +111,6 @@ export class ProductComponent implements OnInit {
         tap(() => (this.loading = false))
       )
       .subscribe((res) => {
-        console.log(res);
         this.data = res;
         this.cdr.detectChanges();
       });
@@ -125,7 +134,9 @@ export class ProductComponent implements OnInit {
 
   remove() {
     this.http
-      .delete('/rule', { searchNames: this.selectedRows.map((i) => i.searchName).join(',') })
+      .delete('/rule', {
+        searchNames: this.selectedRows.map((i) => i.searchName).join(','),
+      })
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
@@ -136,9 +147,20 @@ export class ProductComponent implements OnInit {
     this.msg.success(`Approved ${this.selectedRows.length} pen`);
   }
 
+  productName: string;
+  productPrice: number;
+  supplierId: number;
+  unitCalcId: number;
+  taxId: number;
+  description: string;
+
+  supplierChangeMethod($event) {
+    console.log($event);
+  }
+
   add(tpl: TemplateRef<{}>) {
     this.modalSrv.create({
-      nzTitle: 'New rule',
+      nzTitle: 'Thêm sản phẩm',
       nzContent: tpl,
       nzOnOk: () => {
         this.loading = true;
