@@ -23,7 +23,7 @@ export class UserSettingsBaseComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private msg: NzMessageService
   ) {}
-  avatar = '';
+  avatar = './assets/tmp/img/avatar.jpg';
   userLoading = true;
   user: any;
 
@@ -52,7 +52,7 @@ export class UserSettingsBaseComponent implements OnInit {
     ).subscribe(([user, province]: any) => {
       this.userLoading = false;
       this.user = user;
-      this.user.avatar = './assets/tmp/img/avatar.jpg';
+      this.user.avatar = this.avatar;
       this.user.geographic = this.geographic;
       this.provinces = province;
       this.choProvince(this.geographic.province.key, false);
@@ -102,6 +102,7 @@ export class UserSettingsBaseComponent implements OnInit {
         }
 
         this.user = res.value;
+        this.user.avatar = this.avatar;
         this.msg.success(messageForUser.USERPROFILE_SUCCESS);
       });
   }

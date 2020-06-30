@@ -97,7 +97,7 @@ export class ProductComponent implements OnInit {
       this.q.statusList.push(this.q.status);
     }
     this.http
-      .get(`${environment.API_URL}` + serviceAPI.GETALL_PRODUCT, this.q)
+      .post(`${environment.API_URL}` + serviceAPI.POST_PRODUCT)
       .pipe(
         map((list: any[]) =>
           list.map((i) => {

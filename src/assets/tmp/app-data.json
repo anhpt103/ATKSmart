@@ -61,26 +61,37 @@
             "group": true,
             "hideInBreadcrumb": true,
             "children": [{
-                "text": "Tài khoản",
-                "i18n": "menu.account",
-                "icon": "anticon-user",
-                "children": [{
-                        "text": "settings",
-                        "link": "/user/settings",
-                        "i18n": "menu.account.settings"
-                    },
-                    {
-                        "text": "group",
-                        "link": "/group",
-                        "i18n": "menu.group.settings"
-                    },
-                    {
-                        "text": "permission",
-                        "link": "/permission",
-                        "i18n": "menu.permission.settings"
-                    }
-                ]
-            }]
+                    "text": "Tài khoản",
+                    "i18n": "menu.account",
+                    "icon": "anticon-user",
+                    "children": [{
+                            "text": "settings",
+                            "link": "/user/settings",
+                            "i18n": "menu.account.settings"
+                        },
+                        {
+                            "text": "group",
+                            "link": "/group",
+                            "i18n": "menu.group.settings"
+                        },
+                        {
+                            "text": "permission",
+                            "link": "/permission",
+                            "i18n": "menu.permission.settings"
+                        }
+                    ]
+                },
+                {
+                    "text": "Cửa hàng",
+                    "i18n": "menu.store",
+                    "icon": "anticon-appstore",
+                    "children": [{
+                        "text": "store",
+                        "link": "/store/settings",
+                        "i18n": "menu.store.settings"
+                    }]
+                }
+            ]
         },
         {
             "text": "Danh mục",

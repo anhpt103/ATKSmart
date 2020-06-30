@@ -4,6 +4,6 @@ export const serviceAPI = {
   POST_CURRENT_USER: '/api/user/post_current_user',
   POST_USER_PROFILE: '/api/user/post_user_profile',
 
-  GETALL_PRODUCT: '/api/product/get_product',
+  POST_PRODUCT: '/api/product/post_product',
   POST_SUPPLIER_BY_STORE: '/api/supplier/post_sup_by_store',
 };
