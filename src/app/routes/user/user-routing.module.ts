@@ -16,25 +16,25 @@ const routes: Routes = [
       {
         path: 'base',
         component: UserSettingsBaseComponent,
-        data: { titleI18n: 'user-settings' },
+        data: { titleI18n: 'Người dùng' },
       },
       {
         path: 'security',
         component: UserSettingsSecurityComponent,
-        data: { titleI18n: 'user-settings' },
+        data: { titleI18n: 'Bảo mật' },
       },
       {
         path: 'binding',
         component: UserSettingsBindingComponent,
-        data: { titleI18n: 'user-settings' },
+        data: { titleI18n: 'Dữ liệu' },
       },
       {
         path: 'notification',
         component: UserSettingsNotificationComponent,
-        data: { titleI18n: 'user-settings' },
-      }
-    ]
-  }
+        data: { titleI18n: 'Thông báo' },
+      },
+    ],
+  },
 ];
 
 @NgModule({

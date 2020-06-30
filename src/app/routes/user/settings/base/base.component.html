@@ -17,61 +17,38 @@
             required
           />
         </se>
-        <se label="Username" error="Please enter your username!">
-          <input nz-input [(ngModel)]="user.name" name="name" required />
-        </se>
-        <se label="Personal profile">
-          <textarea
+        <se label="Họ">
+          <input
             nz-input
-            [(ngModel)]="user.profile"
-            name="profile"
-            [nzAutosize]="{ minRows: 4, maxRows: 10 }"
-            placeholder="Personal profile"
-          ></textarea>
+            [(ngModel)]="user.firstName"
+            name="firstName"
+            placeholder="Họ"
+            required
+          />
         </se>
-        <se label="Country/Region">
-          <nz-select [(ngModel)]="user.country" name="country" required>
-            <nz-option nzLabel="VietNam" nzValue="Việt Nam"></nz-option>
-          </nz-select>
+        <se label="Tên">
+          <input
+            nz-input
+            [(ngModel)]="user.lastName"
+            name="lastName"
+            placeholder="Tên"
+            required
+          />
         </se>
-        <se label="Provinces/City">
-          <div class="d-flex justify-content-between">
-            <nz-select
-              [(ngModel)]="user.geographic.province.key"
-              (ngModelChange)="choProvince($event)"
-              name="geographic.province.key"
-              required
-              class="width-50 mr-sm"
-            >
-              <nz-option
-                *ngFor="let p of provinces"
-                [nzLabel]="p.name"
-                [nzValue]="p.id"
-              ></nz-option>
-            </nz-select>
-            <nz-select
-              [(ngModel)]="user.geographic.city.key"
-              name="geographic.city.key"
-              required
-              class="width-50"
-            >
-              <nz-option
-                *ngFor="let p of cities"
-                [nzLabel]="p.name"
-                [nzValue]="p.id"
-              ></nz-option>
-            </nz-select>
-          </div>
-        </se>
-        <se label="Address" error="Please enter your address!">
+        <se label="Địa chỉ" error="Please enter your address!">
           <input nz-input [(ngModel)]="user.address" name="address" required />
         </se>
-        <se label="Phone number" error="Please enter your phone number!">
-          <input nz-input [(ngModel)]="user.phone" name="phone" required />
+        <se label="Số điện thoại" error="Please enter your phone number!">
+          <input
+            nz-input
+            [(ngModel)]="user.phoneNumber"
+            name="phoneNumber"
+            required
+          />
         </se>
         <se>
           <button nz-button nzType="primary" [disabled]="f.invalid">
-            Update information
+            Cập nhật thông tin
           </button>
         </se>
       </form>

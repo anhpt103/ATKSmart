@@ -26,31 +26,37 @@ export class UserSettingsComponent implements AfterViewInit, OnDestroy {
   menus: any[] = [
     {
       key: 'base',
-      title: 'Basic settings',
+      title: 'Người dùng',
     },
     {
       key: 'security',
-      title: 'Security Settings',
+      title: 'Bảo mật',
     },
     {
       key: 'binding',
-      title: 'Account binding',
+      title: 'Dữ liệu',
     },
     {
       key: 'notification',
-      title: 'New message notification',
+      title: 'Thông báo',
     },
   ];
-  constructor(private router: Router, private cdr: ChangeDetectorRef, private el: ElementRef) {
-    this.router$ = this.router.events.pipe(filter(e => e instanceof ActivationEnd)).subscribe(() => this.setActive());
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private el: ElementRef
+  ) {
+    this.router$ = this.router.events
+      .pipe(filter((e) => e instanceof ActivationEnd))
+      .subscribe(() => this.setActive());
   }
 
   private setActive() {
     const key = this.router.url.substr(this.router.url.lastIndexOf('/') + 1);
-    this.menus.forEach(i => {
+    this.menus.forEach((i) => {
       i.selected = i.key === key;
     });
-    this.title = this.menus.find(w => w.selected).title;
+    this.title = this.menus.find((w) => w.selected).title;
   }
 
   to(item: any) {
