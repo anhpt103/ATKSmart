@@ -1,134 +1,144 @@
 {
-    "app": {
-        "name": "ATK",
-        "description": "Anh Thuy Karaoke Smart"
-    },
-    "user": {
-        "name": "AnhPT",
-        "avatar": "./assets/tmp/img/avatar.jpg",
-        "email": "anhpt@outlook"
-    },
-    "menu": [{
-            "text": "Main navigation",
-            "i18n": "menu.main",
-            "group": true,
-            "hideInBreadcrumb": true,
-            "children": [{
-                    "text": "Dashboard",
-                    "i18n": "menu.dashboard",
-                    "icon": "anticon-dashboard",
-                    "children": [{
-                            "text": "Dashboard v1",
-                            "link": "/dashboard/v1",
-                            "i18n": "menu.dashboard.v1"
-                        },
-                        {
-                            "text": "Analysis page",
-                            "link": "/dashboard/analysis",
-                            "i18n": "menu.dashboard.analysis"
-                        },
-                        {
-                            "text": "Monitoring page",
-                            "link": "/dashboard/monitor",
-                            "i18n": "menu.dashboard.monitor"
-                        },
-                        {
-                            "text": "Workbench",
-                            "link": "/dashboard/workplace",
-                            "i18n": "menu.dashboard.workplace"
-                        }
-                    ]
-                },
-                {
-                    "text": "Shortcut menu",
-                    "i18n": "menu.shortcut",
-                    "icon": "anticon-rocket",
-                    "shortcutRoot": true,
-                    "children": []
-                },
-                {
-                    "text": "Widgets menu",
-                    "i18n": "menu.widgets",
-                    "link": "/widgets",
-                    "icon": "anticon-appstore",
-                    "badge": 2
-                }
-            ]
+  "app": {
+    "name": "ATK",
+    "description": "Anh Thuy Karaoke Smart"
+  },
+  "user": {
+    "name": "AnhPT",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "anhpt@outlook"
+  },
+  "menu": [
+    {
+      "text": "Main navigation",
+      "i18n": "menu.main",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Dashboard",
+          "i18n": "menu.dashboard",
+          "icon": "anticon-dashboard",
+          "children": [
+            {
+              "text": "Dashboard v1",
+              "link": "/dashboard/v1",
+              "i18n": "menu.dashboard.v1"
+            },
+            {
+              "text": "Analysis page",
+              "link": "/dashboard/analysis",
+              "i18n": "menu.dashboard.analysis"
+            },
+            {
+              "text": "Monitoring page",
+              "link": "/dashboard/monitor",
+              "i18n": "menu.dashboard.monitor"
+            },
+            {
+              "text": "Workbench",
+              "link": "/dashboard/workplace",
+              "i18n": "menu.dashboard.workplace"
+            }
+          ]
         },
         {
-            "text": "Hệ thống",
-            "i18n": "menu.pro",
-            "group": true,
-            "hideInBreadcrumb": true,
-            "children": [{
-                    "text": "Tài khoản",
-                    "i18n": "menu.account",
-                    "icon": "anticon-user",
-                    "children": [{
-                            "text": "settings",
-                            "link": "/user/settings",
-                            "i18n": "menu.account.settings"
-                        },
-                        {
-                            "text": "group",
-                            "link": "/group",
-                            "i18n": "menu.group.settings"
-                        },
-                        {
-                            "text": "permission",
-                            "link": "/permission",
-                            "i18n": "menu.permission.settings"
-                        }
-                    ]
-                },
-                {
-                    "text": "Cửa hàng",
-                    "i18n": "menu.store",
-                    "icon": "anticon-appstore",
-                    "children": [{
-                        "text": "store",
-                        "link": "/store/settings",
-                        "i18n": "menu.store.settings"
-                    }]
-                }
-            ]
+          "text": "Shortcut menu",
+          "i18n": "menu.shortcut",
+          "icon": "anticon-rocket",
+          "shortcutRoot": true,
+          "children": []
         },
         {
-            "text": "Danh mục",
-            "i18n": "menu.category",
-            "group": true,
-            "hideInBreadcrumb": true,
-            "children": [{
-                "text": "Quản lý danh mục",
-                "i18n": "menu.category.setting",
-                "icon": "anticon-bulb",
-                "children": [{
-                        "text": "Sản phẩm",
-                        "link": "/category/product",
-                        "i18n": "menu.category.product"
-                    },
-                    {
-                        "text": "Phòng hát",
-                        "link": "/category/room",
-                        "i18n": "menu.category.room"
-                    },
-                    {
-                        "text": "Đơn vị tính",
-                        "link": "/category/unitCalc",
-                        "i18n": "menu.category.unit-calc"
-                    },
-                    {
-                        "text": "Nhà cung cấp",
-                        "link": "/category/supplier",
-                        "i18n": "menu.category.supplier"
-                    },
-                    {
-                        "text": "Loại thuế",
-                        "link": "/category/tax",
-                        "i18n": "menu.category.tax"
-                    }
-                ]
-            }]
+          "text": "Widgets menu",
+          "i18n": "menu.widgets",
+          "link": "/widgets",
+          "icon": "anticon-appstore",
+          "badge": 2
         }
-    ]
+      ]
+    },
+    {
+      "text": "Hệ thống",
+      "i18n": "menu.pro",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Tài khoản",
+          "i18n": "menu.account",
+          "icon": "anticon-user",
+          "children": [
+            {
+              "text": "settings",
+              "link": "/user/settings",
+              "i18n": "menu.account.settings"
+            },
+            {
+              "text": "group",
+              "link": "/group",
+              "i18n": "menu.group.settings"
+            },
+            {
+              "text": "permission",
+              "link": "/permission",
+              "i18n": "menu.permission.settings"
+            }
+          ]
+        },
+        {
+          "text": "Cài đặt chung",
+          "i18n": "menu.common",
+          "icon": "anticon-appstore",
+          "children": [
+            {
+              "text": "store",
+              "link": "/common/settings",
+              "i18n": "menu.common.store.settings"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "text": "Danh mục",
+      "i18n": "menu.category",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Quản lý danh mục",
+          "i18n": "menu.category.setting",
+          "icon": "anticon-bulb",
+          "children": [
+            {
+              "text": "Sản phẩm",
+              "link": "/category/product",
+              "i18n": "menu.category.product"
+            },
+            {
+              "text": "Phòng hát",
+              "link": "/category/room",
+              "i18n": "menu.category.room"
+            },
+            {
+              "text": "Đơn vị tính",
+              "link": "/category/unitCalc",
+              "i18n": "menu.category.unit-calc"
+            },
+            {
+              "text": "Nhà cung cấp",
+              "link": "/category/supplier",
+              "i18n": "menu.category.supplier"
+            },
+            {
+              "text": "Loại thuế",
+              "link": "/category/tax",
+              "i18n": "menu.category.tax"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -46,6 +46,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./user/user.module').then((m) => m.UserModule),
       },
+      {
+        path: 'common',
+        loadChildren: () =>
+          import('./common/common.module').then((m) => m.CommonModule),
+      },
       // Exception
       {
         path: 'exception',

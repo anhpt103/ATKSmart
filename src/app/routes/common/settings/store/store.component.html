@@ -1,0 +1,31 @@
+<nz-spin [nzSpinning]="storeLoading">
+  <div class="main" *ngIf="store">
+    <div class="left">
+      <form
+        nz-form
+        nzLayout="vertical"
+        #f="ngForm"
+        (submit)="save()"
+        se-container="1"
+      >
+        <se label="Tên cửa hàng">
+          <input
+            nz-input
+            [(ngModel)]="store.storeName"
+            name="storeName"
+            placeholder="Tên cửa hàng"
+            required
+          />
+        </se>
+        <se label="Địa chỉ" error="Please enter your address!">
+          <input nz-input [(ngModel)]="store.address" name="address" required />
+        </se>
+        <se>
+          <button nz-button nzType="primary" [disabled]="f.invalid">
+            Cập nhật thông tin
+          </button>
+        </se>
+      </form>
+    </div>
+  </div>
+</nz-spin>
