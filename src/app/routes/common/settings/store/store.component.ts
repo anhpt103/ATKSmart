@@ -29,9 +29,15 @@ export class StoreSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.http
       .post(`${environment.API_URL}` + serviceAPI.POST_STORE)
-      .subscribe((store: any) => {
+      .subscribe((res: any) => {
         this.storeLoading = false;
-        this.store = store;
+
+        if (res.isFailed) {
+          this.msg.error(res.errors[0].message);
+          return;
+        }
+
+        this.store = res.value;
         this.cdr.detectChanges();
       });
   }
@@ -46,9 +52,12 @@ export class StoreSettingsComponent implements OnInit {
       this.msg.error(messageForUser.ADDRESS_REQUIRE);
       return;
     }
-    console.log(this.store);
     this.http
-      .post(`${environment.API_URL}` + serviceAPI.POST_CRU_STORE, this.store)
+      .post(`${environment.API_URL}` + serviceAPI.POST_CRU_STORE, {
+        storeId: this.store.storeId,
+        storeName: this.store.storeName,
+        address: this.store.address,
+      })
       .subscribe((res: any) => {
         if (res.isFailed) {
           this.msg.error(res.errors[0].message);

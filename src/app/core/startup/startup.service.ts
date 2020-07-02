@@ -58,6 +58,7 @@ export class StartupService {
 
             // application data
             const res: any = appData;
+            console.log(res);
             // Application information: including site name, description, year
             this.settingService.setApp(res.app);
             // User information: including name, avatar, email address
